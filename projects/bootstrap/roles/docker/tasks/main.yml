@@ -11,9 +11,15 @@
       stable
     update_cache: true
 
-- name: ensure docker packages are installed
+- name: Install docker and its requirements
   apt:
-    name: "{{ 'docker-ce=' ~ docker_version }}"
+    name: "{{ packages }}"
+    force: yes
+  vars:
+    packages:
+      - python3-pip
+      - python3-setuptools
+      - "{{ 'docker-ce=' ~ docker_version }}"
 
 - name: ensure docker service is started and enabled
   service:
@@ -21,10 +27,14 @@
     enabled: true
     state: started
 
-- name: Update pip
+- name: Update pip & setuptools
   pip:
     name: pip
     state: latest
+  vars:
+    pip_modules:
+      - pip
+      - setuptools
 
 - name: ensure old pip packages removed
   pip:

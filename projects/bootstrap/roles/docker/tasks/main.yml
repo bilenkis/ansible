@@ -29,7 +29,7 @@
 
 - name: Update pip & setuptools
   pip:
-    name: pip
+    name: "{{ pip_modules }}"
     state: latest
   vars:
     pip_modules:

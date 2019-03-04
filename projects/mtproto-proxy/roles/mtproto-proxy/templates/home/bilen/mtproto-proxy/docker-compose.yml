@@ -1,7 +1,7 @@
 version: '2'
 services:
   app:
-    image: 'telegrammessenger/proxy:1.0'
+    image: 'telegrammessenger/proxy:1.3'
     container_name: 'mtproto-proxy'
     ports:
       - '1089:443'

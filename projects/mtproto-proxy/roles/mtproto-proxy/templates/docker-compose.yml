@@ -11,5 +11,5 @@ services:
     environment:
       - SECRET_COUNT=1
       - WORKERS=4
-      - SECRET={{ SECRET_ROLE_SECRET }}
-      - TAG={{ SECRET_ROLE_TAG }}
+      - SECRET={{ secret }}
+      - TAG={{ tag }}

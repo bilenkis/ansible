@@ -1,11 +1,9 @@
 ---
-- include_vars: secrets.yml
-
-- name: templating docker-compose.yml
+- name: Templating docker-compose.yml
   template:
-    src: 'home/bilen/mtproto-proxy/docker-compose.yml'
-    dest: '/home/bilen/mtproto-proxy/docker-compose.yml'
+    src: 'docker-compose.yml'
+    dest: '/home/{{ ansible_env.SUDO_USER }}/mtproto-proxy/docker-compose.yml'
 
-- name: run docker-compose up
+- name: Run docker-compose up
   docker_service:
-    project_src: '/home/bilen/mtproto-proxy'
+    project_src: '/home/{{ ansible_env.SUDO_USER }}/mtproto-proxy'

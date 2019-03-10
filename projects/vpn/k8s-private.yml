@@ -1,0 +1,6 @@
+---
+- name: deploying wireguard
+  hosts: hetzner
+  become: yes
+  roles:
+    - mawalu.wireguard_private_networking

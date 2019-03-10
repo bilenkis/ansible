@@ -1,0 +1,3 @@
+---
+debian_enable_testing: false
+debian_pin_packages: false

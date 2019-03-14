@@ -1,0 +1,35 @@
+---
+- name: Deploy to Kubernetes without templating
+  k8s:
+    state: present
+    namespace: kube-system
+    src: "{{ item }}"
+  with_fileglob:
+    - "files/*.yaml"
+
+- name: Delete secrets
+  k8s:
+    state: absent
+    namespace: kube-system
+    kind: Secret
+    name: "{{ item }}"
+  with_items:
+    - ceph-admin-secret
+    - ceph-secret
+  when: ceph_force
+
+- name: Delete StorageClass rbd
+  k8s:
+    state: absent
+    namespace: kube-system
+    kind: StorageClass
+    name: rbd
+  when: ceph_force
+
+- name: Template and deploy to Kubernetes
+  k8s:
+    state: present
+    namespace: kube-system
+    definition: "{{ lookup('template', item) }}"
+  with_fileglob:
+    - "templates/*.yaml.j2"

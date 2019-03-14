@@ -1,0 +1,20 @@
+---
+kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+  name: "{{ ceph_pv_name }}"
+{% if ceph_rbd_default_pv | bool %}
+  annotations: {"storageclass.kubernetes.io/is-default-class":"true"}
+{% endif %}
+provisioner: ceph.com/rbd
+parameters:
+  monitors: {{ ceph_mon | list | join(",") }}
+  pool: {{ ceph_pool }}
+  adminId: admin
+  adminSecretNamespace: kube-system
+  adminSecretName: {{ ceph_admin_secret }}
+  userId: kube
+  userSecretNamespace: kube-system
+  userSecretName: {{ ceph_secret }}
+  imageFormat: "2"
+  imageFeatures: layering

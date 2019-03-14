@@ -12,9 +12,9 @@ parameters:
   pool: {{ ceph_pool }}
   adminId: admin
   adminSecretNamespace: kube-system
-  adminSecretName: {{ ceph_admin_secret }}
+  adminSecretName: ceph-admin-secret
   userId: kube
   userSecretNamespace: kube-system
-  userSecretName: {{ ceph_secret }}
+  userSecretName: ceph-secret
   imageFormat: "2"
   imageFeatures: layering

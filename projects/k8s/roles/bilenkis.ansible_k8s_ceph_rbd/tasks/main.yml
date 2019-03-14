@@ -1,12 +1,4 @@
 ---
-- name: Deploy to Kubernetes without templating
-  k8s:
-    state: present
-    namespace: kube-system
-    src: "{{ item }}"
-  with_fileglob:
-    - "files/*.yaml"
-
 - name: Delete secrets
   k8s:
     state: absent
@@ -25,6 +17,14 @@
     kind: StorageClass
     name: rbd
   when: ceph_force
+
+- name: Deploy to Kubernetes without templating
+  k8s:
+    state: present
+    namespace: kube-system
+    src: "{{ item }}"
+  with_fileglob:
+    - "files/*.yaml"
 
 - name: Template and deploy to Kubernetes
   k8s:

@@ -2,6 +2,5 @@
 debian_enable_testing: false
 debian_pin_packages: false
 
-generate_client_config: true
 client_wireguard_path: "~/Openvpn/wg.conf"
 client_vpn_ip: 10.1.0.254/32

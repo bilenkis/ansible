@@ -1,5 +1,0 @@
----
-- name: Add Ceph RBD to k8s
-  hosts: localhost
-  roles:
-    - bilenkis.ansible_k8s_ceph_rbd

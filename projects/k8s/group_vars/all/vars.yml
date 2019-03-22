@@ -1,9 +1,0 @@
----
-ceph_mon:
- - 195.201.147.113:6789
-
-ceph_admin_secret: "{{ vault_ceph_admin_secret }}"
-ceph_secret: "{{ vault_ceph_secret }}"
-
-ceph_rbd_default_pv: true
-ceph_force: true

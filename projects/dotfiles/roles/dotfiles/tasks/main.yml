@@ -1,6 +1,6 @@
 ---
 - name: Install necessary admin packages
-  become: yes
+  become: true
   package:
     name: "{{ packages }}"
   vars:

@@ -2,6 +2,6 @@
 - name: Reload .tmux.conf
   command: >
     tmux source-file ~/.tmux.conf
-  ignore_errors: yes
+  ignore_errors: true
   changed_when: false
   listen: reload_console

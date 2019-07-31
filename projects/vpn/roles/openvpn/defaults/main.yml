@@ -49,6 +49,7 @@ openvpn_key_size: 1024
 openvpn_clients:
   - mikrotik
   - bilen-mac
+  - nicolasfa
 
 openvpn_clients_revoke: []                        # Revoke clients certificates
 

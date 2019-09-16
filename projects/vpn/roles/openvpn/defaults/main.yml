@@ -50,6 +50,7 @@ openvpn_clients:
   - mikrotik
   - bilen-mac
   - nicolasfa
+  - tyhiro-ios
 
 openvpn_clients_revoke: []                        # Revoke clients certificates
 

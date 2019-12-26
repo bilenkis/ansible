@@ -54,10 +54,11 @@
           {%- endif -%}
         {%- endfor -%}
       {%- endfor -%}
+  when: not ansible_check_mode
 
 - name: increasing buffers for interfaces
   command: >
-    ethtool -G 
+    ethtool -G
     {{ item.split(' ')[0] }}
     {{ item.split(' ')[1] }}
     {{ item.split(' ')[2] }}
@@ -65,6 +66,7 @@
     - "{{ rx_tune }}"
     - "{{ tx_tune }}"
   ignore_errors: true
+  when: not ansible_check_mode
 
 - name: installing network scripts
   copy:
@@ -77,7 +79,7 @@
   with_items:
     - /etc/resolv.conf.dnsmasq
   tags: dnsmasq
-    
+
 - name: /etc/resolv.conf
   template: src=resolv.conf.j2 dest={{ item }}
   with_items:

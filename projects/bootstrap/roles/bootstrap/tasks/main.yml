@@ -10,8 +10,8 @@
 
 - name: sysctl preferences
   copy:
-    src: etc/sysctl.d/custom.conf
-    dest: /etc/sysctl.d/custom.conf
+    src: etc/sysctl.d/60-custom.conf
+    dest: /etc/sysctl.d/60-custom.conf
   notify: sysctl
 
 - name: Update scheduller at startup

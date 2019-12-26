@@ -1,3 +1,5 @@
 ---
 - name: sysctl
-  shell: sysctl -qp
+  systemd:
+    name: "systemd-sysctl.service"
+    state: "restarted"
